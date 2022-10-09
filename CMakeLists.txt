@@ -3,4 +3,4 @@ project(rSTL)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(rSTL main.cpp)
+add_executable(rSTL main.cpp include/config.h)
