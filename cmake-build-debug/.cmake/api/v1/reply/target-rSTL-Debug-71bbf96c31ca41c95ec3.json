@@ -92,7 +92,9 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1
+				1,
+				2,
+				3
 			]
 		}
 	],
@@ -107,6 +109,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "include/config.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/utility.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/type_traits.h",
 			"sourceGroupIndex" : 1
 		}
 	],
