@@ -1,29 +1,9 @@
-/* ----------------------------------------------------------------------------
- * Support:
- *
- *
- * Implementation:
- * integral_constant
- * true_type
- * false_type
- * bool_constant
- * enable_if
- * disable_if
- * add_lvalue_reference
- * is_constructible
- * is_default_constructible
- * is_convertible
- * is_const
- * is_reference
- * is_function
- * add_const
- *
- *
- * ----------------------------------------------------------------------------*/
 #ifndef RSTL_TYPE_TRAITS_H
 #define RSTL_TYPE_TRAITS_H
 
 #include "config.h"
+
+#include <limits.h>
 
 #pragma once
 
@@ -308,7 +288,300 @@ struct is_copy_constructible : public is_constructible<T, add_lvalue_reference_t
 template <typename T>
 constexpr bool is_copy_constructible_v = is_copy_constructible<T>::value;
 
+/*
+ * remove_reference
+ * */
 
+template <typename T>
+struct remove_reference
+{
+	using type = T;
+};
+
+template <typename T>
+struct remove_reference<T&>
+{
+	using type = T;
+};
+
+template <typename T>
+struct remove_reference<T&&>
+{
+	using type = T;
+};
+
+template <typename T>
+using remove_reference_t = typename remove_reference<T>::type;
+
+/*
+ * pieceWise_construct_t
+ * */
+
+struct piecewise_construct_t
+{
+	explicit piecewise_construct_t() = default;
+};
+
+/*
+ * is_nothrow_assignable
+ * */
+
+template <typename T, typename U>
+struct is_nothrow_assignable : integral_constant<bool, __is_nothrow_assignable(T, U)>
+{
+
+};
+
+template <typename T, typename U>
+constexpr bool is_nothrow_assignable_v = is_nothrow_assignable<T, U>::value;
+
+/*
+ * is_nothrow_copy_assignable
+ * */
+
+template <typename T>
+struct is_nothrow_copy_assignable : is_nothrow_assignable<add_lvalue_reference_t<T>, add_lvalue_reference_t<add_const_t<T>>>
+{
+
+};
+
+template <typename T>
+constexpr bool is_nothrow_copy_assignable_v = is_nothrow_copy_assignable<T>::value;
+
+/*
+ * yes_type / no_type
+ * */
+
+using yes_type = char;
+
+struct no_type
+{
+	char padding[8];
+};
+
+/*
+ * add_rvalue_reference
+ * */
+
+template <typename T>
+struct add_rvalue_reference
+{
+	using type = T&&;
+};
+
+template <typename T>
+struct add_rvalue_reference<T&>
+{
+	using type = T&;
+};
+
+template <>
+struct add_rvalue_reference<void>
+{
+	using type = void;
+};
+
+template <>
+struct add_rvalue_reference<const void>
+{
+	using type = const void;
+};
+
+template <>
+struct add_rvalue_reference<volatile void>
+{
+	using type = volatile void;
+};
+
+template <>
+struct add_rvalue_reference<const volatile void>
+{
+	using type = const volatile void;
+};
+
+template <typename T>
+using add_rvalue_reference_t = typename add_rvalue_reference<T>::type;
+
+/*
+ * declval
+ * */
+
+template <typename T>
+add_rvalue_reference_t<T> declval() noexcept;
+
+
+/*
+ * is_assignable
+ * */
+
+template <typename T, typename U>
+struct is_assignable_helper
+{
+
+	template<typename T1, typename U1>
+	static decltype(declval<T1>() = declval<U1>(), yes_type()) is(int);
+
+	template<typename, typename>
+	static no_type is(...);
+
+	static const bool value = (sizeof(is<T, U>(0)) == sizeof(yes_type));
+};
+
+template<typename T, typename U>
+struct is_assignable : integral_constant<bool, is_assignable_helper<T, U>::value>
+{
+
+};
+
+template<typename T, typename U>
+constexpr bool is_assignable_v = is_assignable<T, U>::value;
+
+/*
+ * is_move_assignable
+ * */
+
+template <typename T>
+struct is_move_assignable : is_assignable<add_lvalue_reference_t<T>, add_rvalue_reference_t<T>>
+{
+
+};
+
+template <typename T>
+constexpr bool is_move_assignable_v = is_move_assignable<T>::value;
+
+/*
+ * is_nothrow_move_assignable
+ * */
+
+template <typename T>
+struct is_nothrow_move_assignable : is_nothrow_assignable<add_lvalue_reference_t<T>, add_rvalue_reference_t<T>>
+{
+
+};
+
+template <typename T>
+constexpr bool is_nothrow_move_assignable_v = is_nothrow_move_assignable<T>::value;
+
+/*
+ * has_nothrow_constructor
+ * */
+
+template <typename T>
+struct has_nothrow_constructor : public integral_constant<bool, __has_nothrow_constructor(T)>
+{
+
+};
+
+template <typename T>
+constexpr bool has_nothrow_constructor_v = has_nothrow_constructor<T>::value;
+
+/*
+ * has_nothrow_copy
+ * */
+
+template <typename T>
+struct has_nothrow_copy : integral_constant<bool, __has_nothrow_copy(T)>
+{
+
+};
+
+template <typename T>
+constexpr bool has_nothrow_copy_v = has_nothrow_copy<T>::value;
+
+/*
+ * is_nothrow_constructible
+ * */
+
+template <typename T, typename... Args>
+struct is_nothrow_constructible : false_type
+{
+
+};
+
+template <typename T>
+struct is_nothrow_constructible<T> : integral_constant<bool, has_nothrow_constructor_v<T>>
+{
+
+};
+
+template <typename T>
+struct is_nothrow_constructible<T, T> : integral_constant<bool, has_nothrow_copy_v<T>>
+{
+
+};
+
+template <typename T>
+struct is_nothrow_constructible<T, const T&> : public integral_constant<bool, has_nothrow_copy_v<T>>
+{
+
+};
+
+template <typename T>
+struct is_nothrow_constructible<T, T&> : public integral_constant<bool, has_nothrow_copy_v<T>>
+{
+
+};
+
+template <typename T>
+struct is_nothrow_constructible<T, T&&> : public integral_constant<bool, has_nothrow_copy_v<T>>
+{
+
+};
+
+template <typename T, typename... Args>
+constexpr bool is_nothrow_constructible_v = is_nothrow_constructible_v<T, Args...>;
+
+
+/*
+ * is_nothrow_move_constructible
+ * */
+
+template <typename T>
+struct is_nothrow_move_constructible : is_nothrow_constructible<T, add_rvalue_reference_t<T>>
+{
+
+};
+
+template <typename T>
+constexpr bool is_nothrow_move_constructible_v = is_nothrow_move_constructible<T>::value;
+
+/*
+ * type_and
+ * */
+
+template <bool b1, bool b2, bool b3 = true, bool b4 = true, bool b5 = true>
+struct type_and;
+
+template <bool b1, bool b2, bool b3, bool b4, bool b5>
+struct type_and
+{
+	static const bool value = false;
+};
+
+template <>
+struct type_and<true, true, true, true, true>
+{
+	static const bool value = true;
+};
+
+/*
+ * is_same
+ * */
+
+template <typename T, typename U>
+struct is_same : false_type
+{
+
+};
+
+template <typename T>
+struct is_same<T, T> : true_type
+{
+
+};
+
+template <typename T, typename U>
+constexpr bool is_same_v = is_same<T, U>::value;
 
 RSTL_NAMESPACE_END
 
