@@ -111,7 +111,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/config.h",
+			"path" : "internal/config.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -121,22 +121,22 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/type_traits.h",
+			"path" : "internal/tuple_fwd_decls.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/move.h",
+			"path" : "include/tuple.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/iterator.h",
+			"path" : "internal/integer_sequence.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "internal/type_void_t.h",
+			"path" : "internal/piecewise_construct_t.h",
 			"sourceGroupIndex" : 1
 		}
 	],

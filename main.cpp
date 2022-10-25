@@ -3,19 +3,15 @@
 #include <cstdio>
 #include <vector>
 #include <ranges>
-#include<any>
+#include <any>
 
 #include "include/utility.h"
-#include "include/type_traits.h"
-
-
-
+#include "include/tuple.h"
 
 int main(int argc, char *argv[])
 {
 
 	using namespace rstl;
-
 
 
 	return 0;
