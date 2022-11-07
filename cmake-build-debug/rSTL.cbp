@@ -78,6 +78,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/allocator.h">
+			<Option target="rSTL"/>
+		</Unit>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/shared_ptr.h">
+			<Option target="rSTL"/>
+		</Unit>
 		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/tuple.h">
 			<Option target="rSTL"/>
 		</Unit>
@@ -91,6 +97,9 @@
 			<Option target="rSTL"/>
 		</Unit>
 		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/piecewise_construct_t.h">
+			<Option target="rSTL"/>
+		</Unit>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/thread_support.h">
 			<Option target="rSTL"/>
 		</Unit>
 		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/tuple_fwd_decls.h">

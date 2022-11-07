@@ -14,4 +14,17 @@
 #define RSTL_NAMESPACE_BEGIN namespace rstl{
 #define RSTL_NAMESPACE_END }
 
+#ifndef CUSTOM_FREE
+#  define CUSTOM_FREE(allocator, p, size) (allocator).deallocate((void*)(p), (size))
+#endif
+
+#ifndef DEFAULT_NAME_PREFIX
+#  define DEFAULT_NAME_PREFIX "rstl"
+#endif
+
+#ifndef ALLOCATOR_DEFAULT_NAME
+#  define ALLOCATOR_DEFAULT_NAME DEFAULT_NAME_PREFIX
+#endif
+
+
 #endif // RSTL_CONFIG_H

@@ -8,10 +8,10 @@
 #include "include/utility.h"
 #include "include/tuple.h"
 
+
+
 int main(int argc, char *argv[])
 {
-
-	using namespace rstl;
 
 
 	return 0;

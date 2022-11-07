@@ -329,7 +329,7 @@ namespace Tuple_Internal {
 
 	/*
 	 * template<typename T0, typename T1, ..., typename Tn>
-	 * class PseudoTuple : TupleLeaf<0, T0>, TupleLeaf<1, T1>, ..., TupleLeaf<n, Tn> {
+	 * class Tuple : TupleLeaf<0, T0>, TupleLeaf<1, T1>, ..., TupleLeaf<n, Tn> {
 	 * ...
 	 * };
 	 * */
@@ -695,7 +695,6 @@ class tuple<T, Ts...>
 {
 public:
 	constexpr tuple() = default;
-
 
 	template <typename T2 = T, Tuple_Internal::TupleImplicitlyConvertible_t<tuple, const T2&, const Ts&...> = 0>
 	constexpr tuple(const T &t, const Ts&... ts) : mImpl(make_index_sequence<sizeof...(Ts) + 1>{}, Tuple_Internal::MakeTupleTypes_t<tuple>{}, t, ts...) {} // use constructor of TupleImpl
