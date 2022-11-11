@@ -14,8 +14,16 @@
 #define RSTL_NAMESPACE_BEGIN namespace rstl{
 #define RSTL_NAMESPACE_END }
 
+#ifndef CUSTOM_ALLOC
+#  define CUSTOM_ALLOC(allocator, n) (allocator).allocate(n);
+#endif
+
 #ifndef CUSTOM_FREE
 #  define CUSTOM_FREE(allocator, p, size) (allocator).deallocate((void*)(p), (size))
+#endif
+
+#ifndef ALLOC_ALIGNED
+#  define ALLOC_ALIGNED(allocator,  n, alignment, offset) (allocator).allocate((n), (alignment), (offset))
 #endif
 
 #ifndef DEFAULT_NAME_PREFIX
@@ -24,6 +32,18 @@
 
 #ifndef ALLOCATOR_DEFAULT_NAME
 #  define ALLOCATOR_DEFAULT_NAME DEFAULT_NAME_PREFIX
+#endif
+
+#ifndef ALLOCATOR_MIN_ALIGNMENT
+#  define ALLOCATOR_MIN_ALIGNMENT 8
+#endif
+
+#ifndef PLATFORM_PTR_SIZE
+#  define PLATFORM_PTR_SIZE 8
+#endif
+
+#ifndef UNUSED
+#  define UNUSED(x) (void)(x)
 #endif
 
 

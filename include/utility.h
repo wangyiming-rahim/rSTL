@@ -1,10 +1,10 @@
 #ifndef RSTL_UTILITY_H
 #define RSTL_UTILITY_H
 
-#include "../internal/config.h"
-#include "../internal/piecewise_construct_t.h"
-#include "../internal/tuple_fwd_decls.h"
-#include "../internal/integer_sequence.h"
+#include "internal/config.h"
+#include "internal/piecewise_construct_t.h"
+#include "internal/tuple_fwd_decls.h"
+#include "internal/integer_sequence.h"
 
 #pragma once
 

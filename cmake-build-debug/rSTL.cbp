@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/wangyiming/CLionProjects/rSTL/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -64,6 +65,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/wangyiming/CLionProjects/rSTL/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -78,33 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/allocator.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/shared_ptr.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/tuple.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/utility.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/config.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/integer_sequence.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/piecewise_construct_t.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/thread_support.h">
-			<Option target="rSTL"/>
-		</Unit>
-		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/internal/tuple_fwd_decls.h">
-			<Option target="rSTL"/>
-		</Unit>
 		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/main.cpp">
 			<Option target="rSTL"/>
 		</Unit>

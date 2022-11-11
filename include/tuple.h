@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include "../internal/config.h"
-#include "../internal/tuple_fwd_decls.h"
-#include "../internal/integer_sequence.h"
+#include "internal/config.h"
+#include "internal/tuple_fwd_decls.h"
+#include "internal/integer_sequence.h"
 #include "../include/utility.h"
 
 #include <cstddef>
