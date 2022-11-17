@@ -80,6 +80,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/internal/call_traits.h">
+			<Option target="rSTL"/>
+		</Unit>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/internal/compressed_pair.h">
+			<Option target="rSTL"/>
+		</Unit>
+		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/include/unique_ptr.h">
+			<Option target="rSTL"/>
+		</Unit>
 		<Unit filename="/Users/wangyiming/CLionProjects/rSTL/main.cpp">
 			<Option target="rSTL"/>
 		</Unit>

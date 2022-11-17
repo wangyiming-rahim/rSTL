@@ -8,13 +8,16 @@
 #include "include/utility.h"
 #include "include/tuple.h"
 #include "include/shared_ptr.h"
+#include "unique_ptr.h"
+
 
 #define f(x)
 
 int main(int argc, char *argv[])
 {
-	int x = 5;
-	int *p = &x;
-	rstl::shared_ptr<int> sp(p);
+	std::string* sp = new std::string("hello");
+	rstl::unique_ptr<std::string> up1(sp);
+//	rstl::unique_ptr<std::string> up2(sp);
+	std::cout << "-=---" << std::endl;
 	return 0;
 }

@@ -430,8 +430,17 @@ CMakeFiles/rSTL.dir/main.cpp.o: ../main.cpp \
   ../include/shared_ptr.h \
   ../include/internal/thread_support.h \
   ../include/allocator.h \
-  ../include/internal/smart_ptr.h
+  ../include/internal/smart_ptr.h \
+  ../include/unique_ptr.h \
+  ../include/internal/compressed_pair.h \
+  ../include/internal/call_traits.h
 
+
+../include/internal/call_traits.h:
+
+../include/internal/compressed_pair.h:
+
+../include/unique_ptr.h:
 
 ../include/internal/smart_ptr.h:
 
